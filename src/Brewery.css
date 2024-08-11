@@ -1,0 +1,25 @@
+#upper {
+  display: flex;
+  height: 30vh;
+  flex-direction: row;
+  border: 2px solid black;
+}
+
+iframe {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+h3 {
+  margin: 2vh;
+}
+
+h4 {
+  margin: 0;
+  font-weight: 400;
+}
+
+p {
+  background-color: blueviolet;
+}
