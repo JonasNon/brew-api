@@ -1,14 +1,18 @@
 #upper {
   display: flex;
+  align-items: flex-end;
   height: 30vh;
+  width: 80vw;
   flex-direction: row;
   border: 2px solid black;
+
 }
 
 iframe {
   width: 100px;
   height: 100px;
   overflow: hidden;
+  background-color: #282C34;
 }
 
 h3 {
@@ -23,3 +27,8 @@ h4 {
 p {
   background-color: blueviolet;
 }
+
+a {
+  color: plum
+}
+
