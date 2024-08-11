@@ -1,5 +1,6 @@
 import React from "react";
 import './Brewery.css'
+import heart from './purple-heart.png'
 
 const iFrameStyles = {
   height: "30vh",
@@ -31,6 +32,7 @@ function Brewery (props) {
         <h4>Phone: {beer.phone}</h4>
         <p>Street: {beer.street} <span> City: {beer.city}</span> Website: <a href={beer.website_url}>{beer.website_url}</a></p> 
       </div>
+      <img src={heart}></img>
     </div>
 
 

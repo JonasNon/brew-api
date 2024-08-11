@@ -32,3 +32,10 @@ a {
   color: plum
 }
 
+img {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  right: 8vw;
+  margin-bottom: 22vh;
+}
