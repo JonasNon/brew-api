@@ -9,7 +9,8 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      arrayOfBeer : []
+      arrayOfBeer : [],
+      arrayofLikes : []
     }
   }
 
@@ -18,7 +19,34 @@ class App extends Component {
     .then( res => {
       const arrayOfBeer = res.data
       this.setState({arrayOfBeer})
+      
     })
+  }
+
+  likeBrewery = (index) => {
+    // arrayOfBeer.map((beer, id) => {
+    //   if (index == id) {
+    //     this.setState({arrayofLikes})
+    //   }
+    //   this.setState({})
+    // })
+    // this.setState({[...this.state.arrayofLikes, }])
+    if (this.state.arrayofLikes.includes(index)) {
+      // let removed = [...this.state.arrayofLikes.slice(0, index), ...this.state.arrayofLikes.slice(index+1, 1)]
+      // console.log("removed: ", removed)
+      // this.setState({removed})
+      index = this.state.arrayofLikes.indexOf(index)
+      console.log(index)
+      const newArray = [
+        ...this.state.arrayofLikes.slice(0, index), // Elements before the one to delete
+        ...this.state.arrayofLikes.slice(index + 1) // Elements after the one to delete
+      ];
+      console.log(newArray)
+      this.setState({arrayofLikes: newArray});
+    } else {
+      this.setState({arrayofLikes: [...this.state.arrayofLikes, index]})
+    }
+    console.log(this.state.arrayofLikes)
   }
 
 
@@ -29,8 +57,7 @@ class App extends Component {
       <header className="App-header">
         <ol>
           {this.state.arrayOfBeer.map((beer, index) => {
-            console.log(this.state.arrayOfBeer[index].name)
-            return  <Brewery key={index} index={index} beer={beer}></Brewery>
+            return  <Brewery key={index} index={index} beer={beer} liked={this.state.arrayofLikes.includes(index)} clickFunc={() => this.likeBrewery(index)}></Brewery>
           })}
         </ol>
       </header>

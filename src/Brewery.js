@@ -1,6 +1,7 @@
 import React from "react";
 import './Brewery.css'
 import heart from './purple-heart.png'
+import fullHeart from "./full-heart.png"
 
 const iFrameStyles = {
   height: "30vh",
@@ -21,7 +22,7 @@ const rightStyles = {
 
 function Brewery (props) {
 
-  const {beer, index} = props
+  const {beer, index, liked, clickFunc} = props
 
   return (
     <div id="upper">
@@ -32,7 +33,7 @@ function Brewery (props) {
         <h4>Phone: {beer.phone}</h4>
         <p>Street: {beer.street} <span> City: {beer.city}</span> Website: <a href={beer.website_url}>{beer.website_url}</a></p> 
       </div>
-      <img src={heart}></img>
+      <img src={liked ? fullHeart : heart} onClick={clickFunc}></img>
     </div>
 
 
