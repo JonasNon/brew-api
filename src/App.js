@@ -45,13 +45,6 @@ class App extends Component {
     this.setState({searchTerm: event.target.value})
   }
 
-  // handleSubmit = (event) => {
-  //   event.preventDefault()
-  //   this.setState({stringList: [...this.state.stringList, this.state.inputValue]})
-  //   this.setState({inputValue: ""})
-  //   this.setState({colorList: [...this.state.colorList, this.state.color]})
-  // }
-
   visibilityCheck = (beer) => {
     if (beer.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())) {
       return true
