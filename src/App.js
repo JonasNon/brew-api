@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
 import axios from 'axios'
@@ -10,7 +9,8 @@ class App extends Component {
     super()
     this.state = {
       arrayOfBeer : [],
-      arrayofLikes : []
+      arrayofLikes : [],
+      searchTerm : ""
     }
   }
 
@@ -24,17 +24,9 @@ class App extends Component {
   }
 
   likeBrewery = (index) => {
-    // arrayOfBeer.map((beer, id) => {
-    //   if (index == id) {
-    //     this.setState({arrayofLikes})
-    //   }
-    //   this.setState({})
-    // })
-    // this.setState({[...this.state.arrayofLikes, }])
+
     if (this.state.arrayofLikes.includes(index)) {
-      // let removed = [...this.state.arrayofLikes.slice(0, index), ...this.state.arrayofLikes.slice(index+1, 1)]
-      // console.log("removed: ", removed)
-      // this.setState({removed})
+
       index = this.state.arrayofLikes.indexOf(index)
       console.log(index)
       const newArray = [
@@ -49,15 +41,35 @@ class App extends Component {
     console.log(this.state.arrayofLikes)
   }
 
+  handleChange = (event) => {
+    this.setState({searchTerm: event.target.value})
+  }
+
+  // handleSubmit = (event) => {
+  //   event.preventDefault()
+  //   this.setState({stringList: [...this.state.stringList, this.state.inputValue]})
+  //   this.setState({inputValue: ""})
+  //   this.setState({colorList: [...this.state.colorList, this.state.color]})
+  // }
+
+  visibilityCheck = (beer) => {
+    if (beer.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())) {
+      return true
+    } else {
+      return false
+    }
+  }
 
 
   render() {
     return (
     <div className="App">
       <header className="App-header">
+        <h3>Search for a brewery name here.</h3>
+        <input type='text' value={this.state.searchTerm} onChange={this.handleChange}></input>
         <ol>
           {this.state.arrayOfBeer.map((beer, index) => {
-            return  <Brewery key={index} index={index} beer={beer} liked={this.state.arrayofLikes.includes(index)} clickFunc={() => this.likeBrewery(index)}></Brewery>
+            return  <Brewery key={index} index={index} beer={beer} liked={this.state.arrayofLikes.includes(index)} clickFunc={() => this.likeBrewery(index)} visible={this.visibilityCheck(beer)}></Brewery>
           })}
         </ol>
       </header>

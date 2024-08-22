@@ -22,13 +22,15 @@ const rightStyles = {
 
 function Brewery (props) {
 
-  const {beer, index, liked, clickFunc} = props
+  const {beer, index, liked, clickFunc, visible} = props
 
   return (
-    <div id="upper">
+    <div id="upper" style={{visibility : visible ? 'visible' : 'hidden' , position : visible ? "static" : "absolute"}}>
       <iframe scrolling="no" style={iFrameStyles} src={beer.website_url} title="description"></iframe>
+      
       <div id="right" style={rightStyles}>
         <h3 key={index}>{beer.name}</h3>
+        {/* <span>{visible ? "true" : "false"}</span> */}
         <span> Brewery type: {beer.brewery_type}</span>
         <h4>Phone: {beer.phone}</h4>
         <p>Street: {beer.street} <span> City: {beer.city}</span> Website: <a href={beer.website_url}>{beer.website_url}</a></p> 
